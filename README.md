@@ -59,7 +59,7 @@ Inside `api/projects/projects-router.js` build the following endpoints:
 - [X] `[DELETE] /api/projects/:id`
   - Returns no response body.
   - If there is no project with the given `id` it responds with a status code 404.
-- [ ] `[GET] /api/projects/:id/actions`
+- [X] `[GET] /api/projects/:id/actions`
   - Returns an array of actions (could be empty) belonging to a project with the given `id`.
   - If there is no project with the given `id` it responds with a status code 404.
 
@@ -147,7 +147,21 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+
+Node is used for building the backend/web servers and uses JSON to send information back and forth between applications. Node is useful for developers because JavaScript lives in the server, thus developers do not have to worry about context switching. Express is a JavaScript framework that sits on top of the NodeJS web server, and is similar to React except it is for the backend. Express sits on top of the raw http module provided by Node and provides extra functionality like routing and middleware support.
+
 1. Understand and explain the use of Middleware.
+
+Middleware is a set of functions that extend software and are used to add features to express. Middleware helps to make our code more DRY and organized. There is 3 primary different types of middleware: built-in middleware, third party middleware, and custom middleware.
+
 1. The basic principles of the REST architectural style.
+
+REST stands for Representational State Transfer. Everything is a resource. Each resource is accessible via a unique URI. Resources can have multiple representations and communication is done over stateless protocol (HTTP). Management of resources is done via HTTP methods.
+
 1. Understand and explain the use of Express Routers.
+
+Express Routers are useful for reorganizing our code for readability and for when we need to scale up our web apps. Express Routers are a way to split the application into sub-applications and make them more modular and easier to maintain. 
+
 1. Describe tooling used to manually test the correctness of an API.
+
+Postman is a client used for manually testing APIs that allows for full control when making API requests. It utilizes a graphical user interface (gui) through which developers can obtain different types of responses that need to be validated.
