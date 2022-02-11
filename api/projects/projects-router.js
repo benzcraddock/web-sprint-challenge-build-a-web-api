@@ -25,12 +25,14 @@ router.get('/:id', validateProjectId, (req, res) => {
 })
 
 // Post endpoint
-router.post('/', validateProject, (req, res, next) => {
-  Projects.insert({ name: req.name })
-    .then(newProject => {
-      res.status(200).json(newProject)
-    })
-    .catch(next)
+router.post('/', validateProject, async (req, res, next) => {
+  try {
+    let newProject = await Projects.insert(req.body)
+    res.status(200).json(newProject)
+  }
+  catch(err) {
+    next(err)
+  }
 })
 
 

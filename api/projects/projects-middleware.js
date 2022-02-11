@@ -20,13 +20,13 @@ async function validateProjectId(req, res, next) {
 }
 
 function validateProject(req, res, next) {
-  const { name } = req.body
-  if(!name || !name.trim()) {
+  let { name, description } = req.body
+  if(!name || !description) {
     res.status(400).json({
-      message: 'Missing require name field'
+      message: 'Missing required name and description fields'
     })
   } else {
-    req.name = name.trim()
+    req.update = { name, description }
     next()
   }
 }
