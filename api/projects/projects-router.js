@@ -48,4 +48,20 @@ router.put('/:id', validateProjectId, validateProject, validateCompleted, (req, 
     .catch(next)
 })
 
+// Delete endpoint
+router.delete('/:id', validateProjectId, async (req, res, next) => {
+  try {
+    await Projects.remove(req.params.id)
+    res.status(200).json({
+      message: 'Successfully removed'
+    })
+  }
+  catch(err) {
+    next(err)
+  }
+})
+
+// Get actions endpoint
+
+
 module.exports = router
