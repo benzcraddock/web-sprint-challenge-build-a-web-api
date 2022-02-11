@@ -3,11 +3,26 @@ const express = require('express')
 const Projects = require('./projects-model')
 const router = express.Router()
 
-// Middleware
+// Import middleware
 const {
-
+  validateProjectId,
+  validateProject
 } = require('./projects-middleware')
 
+// Get all projects endpoint
+router.get('/', (req, res, next) => {
+  Projects.get()
+    .then(projects => {
+      res.json(projects)
+    })
+    .catch(next)
+})
+
+// Get projects
+router.get('/:id', validateProjectId, (req, res) => {
+  let project = req.project
+  res.json(project)
+})
 
 
 
