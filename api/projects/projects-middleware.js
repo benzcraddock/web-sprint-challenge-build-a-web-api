@@ -31,7 +31,20 @@ function validateProject(req, res, next) {
   }
 }
 
+function validateCompleted(req, res, next) {
+  let { completed } = req.body
+  if(completed || completed === false) {
+    next()
+  }
+  else {
+    res.status(400).json({
+      message: 'Required fields are not completed, please verify'
+    })
+  }
+}
+
 module.exports = {
   validateProjectId,
-  validateProject
+  validateProject,
+  validateCompleted
 }

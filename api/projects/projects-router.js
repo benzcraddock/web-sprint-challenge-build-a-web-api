@@ -6,7 +6,8 @@ const router = express.Router()
 // Import middleware
 const {
   validateProjectId,
-  validateProject
+  validateProject,
+  validateCompleted
 } = require('./projects-middleware')
 
 // Get all projects endpoint
@@ -35,6 +36,16 @@ router.post('/', validateProject, async (req, res, next) => {
   }
 })
 
-
+// Put endpoint
+router.put('/:id', validateProjectId, validateProject, validateCompleted, (req, res, next) => {
+  Projects.update(req.params.id, req.body)
+    .then(() => {
+      return Projects.get(req.params.id)
+    })
+    .then(updatedProject => {
+      res.json(updatedProject)
+    })
+    .catch(next)
+})
 
 module.exports = router
