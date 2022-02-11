@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-// Get projects
+// Get project by id
 router.get('/:id', validateProjectId, (req, res) => {
   let project = req.project
   res.json(project)
